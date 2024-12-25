@@ -1,0 +1,28 @@
+<div class="max-w-[400px] text-lime-500 mx-auto my-5 p-5 rounded-lg border-4 border-double border-lime-600 shadow-md">
+  <div class="text-center mb-5">
+    <img [src]="user.photo" [alt]="user.firstName + ' ' + user.name" class="w-[150px] h-[150px] rounded-full border border-lime-600 mb-2.5 mx-auto">
+    <h2 class="font-bold">{{ user.firstName }} {{ user.name }}</h2>
+  </div>
+
+  <div class="flex flex-col gap-4">
+    <div [hidden]="!showAge">
+      <p>Âge: {{ user.age }} ans</p>
+    </div>
+
+    <div class="flex flex-col gap-2.5">
+      <input
+        type="text"
+        [(ngModel)]="user.quote"
+        placeholder="Entrez votre citation..."
+        class="w-full p-2 bg-black border border-lime-500 rounded-md">
+
+      <p *ngIf="user.quote" class="italic text-lime-600">
+        "{{ user.quote }}"
+      </p>
+    </div>
+
+    <button (click)="toggleAge()" class="px-4 py-2 bg-lime-700 text-white rounded-md cursor-pointer hover:bg-lime-500 hover:text-black">
+      {{ showAge ? 'Masquer' : 'Afficher' }} l'âge
+    </button>
+  </div>
+</div>
